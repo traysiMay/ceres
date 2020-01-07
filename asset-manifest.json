@@ -3,8 +3,8 @@
   "app.32bcd8503c8f21a2d6e7.map": "/32bcd8503c8f21a2d6e7.map",
   "runtime~app.js": "/static/js/runtime~app.50b3de45.js",
   "runtime~app.7edb7ab8c3cb7ea1e8f9.map": "/7edb7ab8c3cb7ea1e8f9.map",
-  "static/js/2.dbf30f1f.chunk.js": "/static/js/2.dbf30f1f.chunk.js",
-  "0da26fe6eb0d1079521a.map": "/0da26fe6eb0d1079521a.map",
+  "static/js/2.2b66fa8b.chunk.js": "/static/js/2.2b66fa8b.chunk.js",
+  "da8bf7b764fcd2776964.map": "/da8bf7b764fcd2776964.map",
   "fonts/ARI.ttf": "/./fonts/ARI.ttf",
   "fonts/Euclid.ttf": "/./fonts/Euclid.ttf",
   "apple/icons/icon_180x180.png": "/apple/icons/icon_180x180.png",
@@ -27,10 +27,10 @@
   "favicon.ico": "/favicon.ico",
   "index.html": "/index.html",
   "manifest.json": "/manifest.json",
-  "precache-manifest.3bf289b9688accdf166d9974e767b7c4.js": "/precache-manifest.3bf289b9688accdf166d9974e767b7c4.js",
+  "precache-manifest.bcd91eb03c6486fb9883746bde8669de.js": "/precache-manifest.bcd91eb03c6486fb9883746bde8669de.js",
   "serve.json": "/serve.json",
   "service-worker.js": "/service-worker.js",
-  "static/js/2.dbf30f1f.chunk.js.gz": "/static/js/2.dbf30f1f.chunk.js.gz",
+  "static/js/2.2b66fa8b.chunk.js.gz": "/static/js/2.2b66fa8b.chunk.js.gz",
   "static/js/app.0e4fb7e9.chunk.js.gz": "/static/js/app.0e4fb7e9.chunk.js.gz",
   "static/js/runtime~app.50b3de45.js.gz": "/static/js/runtime~app.50b3de45.js.gz"
 }
