@@ -9,6 +9,10 @@
   "prefer_related_applications": true,
   "related_applications": [
     {
+      "platform": "itunes",
+      "id": "frog.alpha.ceres"
+    },
+    {
       "platform": "play",
       "url": "http://play.google.com/store/apps/details?id=frog.alpha.ceres",
       "id": "frog.alpha.ceres"
@@ -16,7 +20,7 @@
   ],
   "short_name": "ceres",
   "start_url": ".",
-  "theme_color": "#4630EB",
+  "theme_color": "#ffffff",
   "icons": [
     {
       "src": "/apple/splash/icon_1125x2436.png",
