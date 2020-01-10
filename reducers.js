@@ -1,0 +1,40 @@
+import { combineReducers } from "redux";
+import { HIDE, SHOW, SEED, FADE_IN, FADE_OUT } from "./actions";
+
+const VIEW_STATE = {
+  view: false,
+  photos: []
+};
+
+const viewReducer = (state = VIEW_STATE, action) => {
+  switch (action.type) {
+    case SHOW:
+      return { ...state, view: true };
+    case HIDE:
+      return { ...state, view: false };
+    case SEED:
+      return { ...state, photos: [...action.data] };
+    default:
+      return state;
+  }
+};
+
+const UI_STATE = {
+  header: 1
+};
+
+const uiReducer = (state = UI_STATE, action) => {
+  switch (action.type) {
+    case FADE_IN:
+      return { ...state, header: 1 };
+    case FADE_OUT:
+      return { ...state, header: 0 };
+    default:
+      return state;
+  }
+};
+
+export default combineReducers({
+  view: viewReducer,
+  ui: uiReducer
+});
