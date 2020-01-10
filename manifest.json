@@ -4,23 +4,13 @@
   "dir": "auto",
   "display": "standalone",
   "lang": "en",
-  "name": "ceres",
+  "name": "navwtf",
   "orientation": "portrait",
   "prefer_related_applications": true,
-  "related_applications": [
-    {
-      "platform": "itunes",
-      "id": "frog.alpha.ceres"
-    },
-    {
-      "platform": "play",
-      "url": "http://play.google.com/store/apps/details?id=frog.alpha.ceres",
-      "id": "frog.alpha.ceres"
-    }
-  ],
-  "short_name": "ceres",
+  "related_applications": [],
+  "short_name": "navwtf",
   "start_url": ".",
-  "theme_color": "#ffffff",
+  "theme_color": "#4630EB",
   "icons": [
     {
       "src": "/apple/splash/icon_1125x2436.png",
