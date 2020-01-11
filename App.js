@@ -15,6 +15,7 @@ import thunk from "redux-thunk";
 
 const store = createStore(reducers, applyMiddleware(thunk));
 store.dispatch(fetchPhotos());
+
 export default function App(props) {
   const [isLoadingComplete, setLoadingComplete] = useState(false);
 

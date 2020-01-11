@@ -3,6 +3,7 @@ import { HIDE, SHOW, SEED, FADE_IN, FADE_OUT } from "./actions";
 
 const VIEW_STATE = {
   view: false,
+  loading: true,
   photos: []
 };
 
@@ -14,6 +15,10 @@ const viewReducer = (state = VIEW_STATE, action) => {
       return { ...state, view: false };
     case SEED:
       return { ...state, photos: [...action.data] };
+    case "LOADING_IMAGES":
+      return { ...state, loading: true };
+    case "LOADING_COMPLETE":
+      return { ...state, loading: false };
     default:
       return state;
   }

@@ -1,12 +1,19 @@
-import React from "react";
-import { ScrollView, StyleSheet, Text, View, Platform } from "react-native";
+import React, { useEffect } from "react";
+import { StyleSheet, Text, View, FlatList, Dimensions } from "react-native";
 import { SHOW, FADE_OUT, FADE_IN } from "../actions";
 import { connect } from "react-redux";
 import Header from "../components/Header";
 import ImageCard from "../components/ImageCard";
 
-function HomeScreen({ fadeIn, fadeOut, navigation, photos, showViewer }) {
-  if (!photos) return <Text>Frogs</Text>;
+function HomeScreen({
+  fadeIn,
+  fadeOut,
+  loadingImages,
+  navigation,
+  photos,
+  showViewer
+}) {
+  // if (!photos) return <Text>Frogs</Text>;
   const handleScroll = event => {
     const y = event.nativeEvent.contentOffset.y;
     if (y >= 100) {
@@ -15,46 +22,33 @@ function HomeScreen({ fadeIn, fadeOut, navigation, photos, showViewer }) {
       fadeIn();
     }
   };
+  useEffect(() => {
+    loadingImages();
+  }, []);
   return (
     <View style={{ alignItems: "center" }}>
-      <ScrollView
+      <FlatList
+        data={photos}
+        ListHeaderComponent={<Header />}
         stickyHeaderIndices={[0]}
-        onScroll={handleScroll}
-        contentContainerStyle={{
-          flexGrow: 1,
-          justifyContent: "space-between",
-          maxWidth: 1200
+        numColumns={Dimensions.get("window").width > 768 ? 2 : 1}
+        keyExtractor={(item, index) => "key" + index}
+        renderItem={({ item, index }) => {
+          return (
+            <ImageCard
+              key={`${item.folder}-${item.title}`}
+              img={item}
+              i={index}
+              navigation={navigation}
+              pvImg={showViewer}
+            />
+          );
         }}
-      >
-        <Header />
-        <View style={styles.container}>
-          {photos.map((img, i) => {
-            return (
-              <ImageCard
-                key={`${img.folder}-${img.title}`}
-                img={img}
-                i={i}
-                navigation={navigation}
-                pvImg={showViewer}
-              />
-            );
-          })}
-        </View>
-      </ScrollView>
+        onScroll={handleScroll}
+      />
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#ffff",
-    flexDirection: "row",
-    flexWrap: "wrap",
-    width: "100%",
-    justifyContent: "space-around"
-  }
-});
 
 const mapStateToProps = state => {
   const {
@@ -66,6 +60,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => ({
   showViewer: () => dispatch({ type: SHOW }),
   fadeIn: () => dispatch({ type: FADE_IN }),
-  fadeOut: () => dispatch({ type: FADE_OUT })
+  fadeOut: () => dispatch({ type: FADE_OUT }),
+  loadingImages: () => dispatch({ type: "LOADING_IMAGES" })
 });
 export default connect(mapStateToProps, mapDispatchToProps)(HomeScreen);
