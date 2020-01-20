@@ -1,10 +1,11 @@
 import { combineReducers } from "redux";
-import { HIDE, SHOW, SEED, FADE_IN, FADE_OUT } from "./actions";
+import { HIDE, SHOW, SEED, FADE_IN, FADE_OUT, LOADING_IMAGES, LOADING_COMPLETE } from "./actions";
 
 const VIEW_STATE = {
   view: false,
   loading: true,
-  photos: []
+  photos: [],
+  previews: []
 };
 
 const viewReducer = (state = VIEW_STATE, action) => {
@@ -14,10 +15,10 @@ const viewReducer = (state = VIEW_STATE, action) => {
     case HIDE:
       return { ...state, view: false };
     case SEED:
-      return { ...state, photos: [...action.data] };
-    case "LOADING_IMAGES":
+      return { ...state, photos: [...action.photos], previews: [...action.previews] };
+    case LOADING_IMAGES:
       return { ...state, loading: true };
-    case "LOADING_COMPLETE":
+    case LOADING_COMPLETE:
       return { ...state, loading: false };
     default:
       return state;

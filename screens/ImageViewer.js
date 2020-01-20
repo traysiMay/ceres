@@ -21,11 +21,6 @@ const ImageViewer = ({ dispatch, photos, view }) => {
         onClose={() => {
           dispatch({ type: HIDE });
         }}
-        renderFooter={currentImage => (
-          <View>
-            <Text>My footer</Text>
-          </View>
-        )}
       />
     </View>
   );

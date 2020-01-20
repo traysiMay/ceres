@@ -11,7 +11,8 @@ import {
 } from "react-native";
 import Svg, { Polyline } from "react-native-svg";
 import LottieComponent from "./LottieComponent";
-import { webMobile } from "../utils";
+import { webMobile, webDesk } from "../utils";
+import { LOADING_COMPLETE } from "../actions";
 
 const lorem =
   "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
@@ -38,23 +39,23 @@ const ImageCard = ({ dispatch, loading, navigation, img, i, pvImg }) => {
       i === 0
         ? pusher
         : getRandomInt(
-            (i * multiplier) / divisor,
-            (i * multiplier) / divisor + pusher
-          );
+          (i * multiplier) / divisor,
+          (i * multiplier) / divisor + pusher
+        );
     const y = getRandomInt(0, 100);
     points.push(`${x},${y}`);
   }
   const pointString = points.join(" ");
   useEffect(() => {
-    setTimeout(() => dispatch({ type: "LOADING_COMPLETE" }), 2000);
+    setTimeout(() => dispatch({ type: LOADING_COMPLETE }), 2000);
   });
   return (
     <View
       style={[
         {
           width: wWidth < 500 ? wWidth : 500,
-          marginTop: i % 2 && Platform.OS === "web" ? 100 : 0,
-          marginLeft: i % 2 && Platform.OS === "web" ? 100 : 0
+          marginTop: i % 2 && webDesk ? 100 : 0,
+          marginLeft: i % 2 && webDesk ? 100 * ((Dimensions.get('window').width - 1000) / 150) : 0
         },
         styles.cardContainer
       ]}
@@ -63,23 +64,23 @@ const ImageCard = ({ dispatch, loading, navigation, img, i, pvImg }) => {
         {loading ? (
           <LottieComponent />
         ) : (
-          <TouchableHighlight
-            onPress={() => {
-              if (Platform.OS === "web") {
-                navigation.navigate("Preview", { uri: img.url });
-              } else {
-                pvImg();
-              }
-            }}
-          >
-            <Image
-              style={[{ width, height }]}
-              source={{
-                uri: img.url
+            <TouchableHighlight
+              onPress={() => {
+                if (Platform.OS === "web") {
+                  navigation.navigate("Preview", { uri: img.url });
+                } else {
+                  pvImg();
+                }
               }}
-            />
-          </TouchableHighlight>
-        )}
+            >
+              <Image
+                style={[{ width, height }]}
+                source={{
+                  uri: img.url
+                }}
+              />
+            </TouchableHighlight>
+          )}
 
         <View style={{ marginTop: 4 }}>
           <View style={styles.bottomWrapper}>

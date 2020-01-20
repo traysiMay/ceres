@@ -10,10 +10,9 @@ function HomeScreen({
   fadeOut,
   loadingImages,
   navigation,
-  photos,
+  previews,
   showViewer
 }) {
-  // if (!photos) return <Text>Frogs</Text>;
   const handleScroll = event => {
     const y = event.nativeEvent.contentOffset.y;
     if (y >= 100) {
@@ -22,13 +21,15 @@ function HomeScreen({
       fadeIn();
     }
   };
+
   useEffect(() => {
     loadingImages();
   }, []);
+
   return (
-    <View style={{ alignItems: "center" }}>
+    <View style={{ alignItems: "center", display: "flex" }}>
       <FlatList
-        data={photos}
+        data={previews}
         ListHeaderComponent={<Header />}
         stickyHeaderIndices={[0]}
         numColumns={Dimensions.get("window").width > 768 ? 2 : 1}
@@ -52,9 +53,9 @@ function HomeScreen({
 
 const mapStateToProps = state => {
   const {
-    view: { photos }
+    view: { previews }
   } = state;
-  return { photos };
+  return { previews };
 };
 
 const mapDispatchToProps = dispatch => ({
